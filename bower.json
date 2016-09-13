@@ -1,0 +1,21 @@
+{
+  "name": "frontier",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "john1427"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.1.0",
+    "angular": "angularjs#^1.5.8"
+  }
+}
