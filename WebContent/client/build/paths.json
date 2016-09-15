@@ -1,0 +1,13 @@
+{
+	"dist": ".<%= build.web_root %>/apps",
+	"vendor": ".<%= build.bower_root %>/bower_components",
+	"client": ".<%= build.web_root %>/client",
+	"js": ".<%= build.web_root %>/client/scripts",
+	"css": ".<%= build.web_root %>/client/styles",
+	"less": ".<%= build.web_root %>/client/less",
+	"img": ".<%= build.web_root %>/client/images",
+	"font": ".<%= build.web_root %>/client/fonts",
+	"temp": ".<%= build.web_root %>/client/build/temporary",
+	"root": ".",
+	"template": ".<%= build.web_root %>/client/views"
+}

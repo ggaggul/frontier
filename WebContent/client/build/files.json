@@ -1,0 +1,20 @@
+{
+	"bump": ["package.json", "bower.json"],
+	"clean": {
+		"all": ["<%= paths.dist %>/**/*"],
+		"app": [
+			"<%= paths.dist %>/<%= pkg.app_name %>.js",
+			"<%= paths.dist %>/<%= pkg.app_name %>.min.js",
+			"<%= paths.dist %>/styles/<%= pkg.app_name %>.css",
+			"<%= paths.dist %>/styles/<%= pkg.app_name %>.min.css"
+		],
+		"vendor": [
+			"<%= paths.dist %>/vendor.js",
+			"<%= paths.dist %>/vendor.min.js",
+			"<%= paths.dist %>/styles/vendor.css",
+			"<%= paths.dist %>/styles/vendor.min.css"
+		],
+		"temp": ["<%= paths.temp %>"]
+	}
+	
+}
