@@ -1,0 +1,12 @@
+/* frontier - v0.0.1-16
+ 2016-09-19 
+ */
+'use strict';
+/* Source : ./WebContent/client/build/temporary/frontier.vendor.css*/
+.vendor {
+  font: 100% Helvetica, sans-serif;
+  color: #333; }
+
+/* Source : ./WebContent/client/build/temporary/frontier.css*/
+.p-xxs {
+  padding: 10px !important; }
