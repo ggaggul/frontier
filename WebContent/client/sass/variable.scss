@@ -1,8 +1,3 @@
-//custom font
-
-//color variable
-$color-default: #fff;
-
 //path variable
 $sass-base-path: "../..";
 $sass-component-path: "$sass-base-path/bower_components";
@@ -12,8 +7,3 @@ $sass-font-path: "$sass-client-path/fonts";
 
 $default-font-path: "../fonts";
 $default-image-path: "../images";
- 
-//Import app common styles
-@import "layout/margins.scss"
-
-//Import app biz styles

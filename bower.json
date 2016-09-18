@@ -1,5 +1,6 @@
 {
   "name": "frontier",
+  "version": "0.0.1-15",
   "description": "",
   "main": "app.js",
   "authors": [
@@ -16,6 +17,8 @@
   ],
   "devDependencies": {
     "jquery": "^3.1.0",
-    "angular": "angularjs#^1.5.8"
+    "angular": "^1.5.8",
+    "jquery-ui": "^1.12.1",
+    "font-awesome": "fontawesome#^4.6.3"
   }
 }

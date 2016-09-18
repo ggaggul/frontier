@@ -1,12 +1,12 @@
 // Loaded task에서 사용하는 설정정보를 별도 파일로 관리
 module.exports = function () {
 	return {
-		banner: '' + 
-			'/*! <%= pkg.title || pkg.name %> -v<%= pkg.version %>\n' + 
-			'<%= pkg.description ? " * " + pkg.description + "\\n" : "" %>' +
-			' <%= grunt.template.today("yyyy-mm-dd") %>',
+		banner : '' +
+		'/* <%= pkg.title || pkg.name %> - v<%= pkg.version %>\n' +
+		'<%= pkg.description ? " " + pkg.description + "\\n" : "" %>' +
+		' <%= grunt.template.today("yyyy-mm-dd") %> \n */\n',
 		
-			html2js: {
+		html2js: {
 			app: {
 				rename: function(name) {
 					return '/client/views/' + name;
@@ -21,10 +21,10 @@ module.exports = function () {
 						return '/* Source : ' + filepath + '*/\n' +
 								src.replace(/('use strict'|"use strict");/g, '');
 					}else if(filepath.indexOf('client/build/temporary') > -1){
-						return '// Source : ' + filepath + '*/\n' +
+						return '/* Source : ' + filepath + '*/\n' +
 								src.replace(/('use strict'|"use strict");/g, '');
 					}else {
-						return '// Source : ' + filepath + '*/\n' +
+						return '/* Source : ' + filepath + '*/\n' +
 								//src.replace(/('use strict'|"use strict");/g, '').replace(/(\/*([\s\S]?)\\/)|(\/\/(.*))/g, '').replace(/^\s+/g, '').replace(/\s+$/gm, '');
 								src.replace(/('use strict'|"use strict");/g, '').replace(/(\/\/(.*))/g, '').replace(/^\s+/g, '').replace(/\s+$/gm, '');
 					}
@@ -34,7 +34,7 @@ module.exports = function () {
 		
 		options: {
 			html2js: {
-				fileHeaderString: 'function(window, angular, undefined) {',
+				fileHeaderString: '(function(window, angular, undefined) {',
 				fileFooterString: '})(window, window.angular);',
 				htmlmin: {
 					removeComments: true,
@@ -46,8 +46,16 @@ module.exports = function () {
 					removeStyleLinkTypeAttributes: true
 				}
 			},
-			sass :{
-				sourcemap: 'none'
+			sass: {
+				release: {
+					sourcemap: 'none'
+				},
+				development: {
+					sourcemap: 'none'	
+				}
+			},
+			ngAnnotate: {
+				singleQuotes: true
 			},
 			uglify: {
 				sourceMap: false,

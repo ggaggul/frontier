@@ -3,7 +3,7 @@
 	"jshint": ["<%= paths.js %>/**/*.js"],
 	"watch": {
 		"js": ["<%= paths.js %>/**/*.js"],
-		"scss": "<%= paths.sass %>/**/*.scss"
+		"sass": "<%= paths.sass %>/**/*.scss"
 	},
 	"clean": {
 		"all": ["<%= paths.dist %>/**/*"],
@@ -23,6 +23,61 @@
 	},
 	"sass": {
 		"app": {"<%= paths.temp %>/<%= pkg.app_name %>.css": ["<%= paths.sass %>/frontier.scss"]},
-		"appVendor": {"<%= paths.temp %>/<%= pkg.app_name %>.vendor.css": ["<%= paths.sass %>/vendor.scss"]}
+		"appVendor": {"<%= paths.temp %>/<%= pkg.app_name %>.vendor.css": ["<%= paths.sass %>/vendor.scss"]},
+		"appDev": {"<%= paths.client %>/styles/<%= pkg.app_name %>.css": ["<%= paths.sass %>/frontier.scss"]}
+	},
+	"html2js": {
+		"app": {"<%= paths.temp %>/views/template.js": ["<%= paths.template %>/**/*.tpl.html", "<%= paths.template %>/system/template/guide/**/*"]}
+	},
+	"ngAnnotate": {
+		"app": [{
+			"expand": true,
+			"dot": true,
+			"cwd": "<%= paths.js %>",
+			"dest": "<%= paths.temp %>/scripts",
+			"src": ["**/*.*"]
+		}]
+	},
+	"concat": {
+		"app": {
+			"<%= paths.dist %>/<%= pkg.app_name %>.js" : [
+				"<%= paths.temp %>/scripts/**/index.js",
+				"<%= paths.temp %>/scripts/**/*.js",
+				"<%= paths.temp %>/views/*.js"
+			],
+			"<%= paths.dist %>/styles/<%= pkg.app_name %>.css" : [
+				"<%= paths.temp %>/<%= pkg.app_name %>.vendor.css",
+				"<%= paths.temp %>/<%= pkg.app_name %>.css"
+			]			
+		},
+		"vendor": {
+			"<%= paths.dist %>/vendor.js" : [
+				"<%= paths.vendor %>/jquery/dist/jquery.js",
+				"<%= paths.vendor %>/jquery-ui/jquery-ui.js",
+				"<%= paths.vendor %>/angular/angular.js"
+				
+			],
+			"<%= paths.dist %>/styles/vendor.css" : [
+				
+			]
+		}
+	},
+	"uglify": {
+		"app": {"<%= paths.dist %>/<%= pkg.app_name %>.min.js": ["<%= paths.dist %>/<%= pkg.app_name %>.js"]},
+		"vendor": {"<%= paths.dist %>/vendor.min.js": ["<%= paths.dist %>/vendor.js"]}
+	},
+	"cssmin": {
+		"app": {"<%= paths.dist %>/styles/<%= pkg.app_name %>.min.css": ["<%= paths.dist %>/styles/<%= pkg.app_name %>.css"]},
+		"vendor": {"<%= paths.dist %>/styles/vendor.min.css": ["<%= paths.dist %>/styles/vendor.css"]}
+	},
+	"font": {
+		"fontAwesome": {
+			"<%= paths.dist %>/fonts/font-awesome/fontawesome-webfont.eot": ["<%= paths.vendor %>/font-awesome/fonts/fontawesome-webfont.eot"],
+			"<%= paths.dist %>/fonts/font-awesome/fontawesome-webfont.svg": ["<%= paths.vendor %>/font-awesome/fonts/fontawesome-webfont.svg"],
+			"<%= paths.dist %>/fonts/font-awesome/fontawesome-webfont.ttf": ["<%= paths.vendor %>/font-awesome/fonts/fontawesome-webfont.ttf"],
+			"<%= paths.dist %>/fonts/font-awesome/fontawesome-webfont.woff": ["<%= paths.vendor %>/font-awesome/fonts/fontawesome-webfont.woff"],
+			"<%= paths.dist %>/fonts/font-awesome/fontawesome-webfont.woff2": ["<%= paths.vendor %>/font-awesome/fonts/fontawesome-webfont.woff2"],
+			"<%= paths.dist %>/fonts/font-awesome/FontAwesome.otf": ["<%= paths.vendor %>/font-awesome/fonts/FontAwesome.otf"]
+		}
 	}
 }

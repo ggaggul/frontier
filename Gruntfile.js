@@ -60,14 +60,57 @@ module.exports = function (grunt) {
 			temp: '<%= files.clean.temp %>'
 		},
 		sass: {
+			development: {
+				options: config.options.sass.development,
+				files: [
+				    '<%= files.sass.appDev %>'
+				]
+			},
 			release: {
-				options: config.options.sass,
+				options: config.options.sass.release,
 				files: [
 					'<%= files.sass.app %>', '<%= files.sass.appVendor %>'
 				]
 			}
+		},
+		jshint: {
+			files: '<%= files.jshint %>',
+			options: config.options.jshint
+		},
+		ngAnnotate: {
+			options: config.options.ngAnnotate,
+			app: {
+				files: '<%= files.ngAnnotate.app %>'
+			}
+		},
+		concat: {
+			vendor: {files: '<%= files.concat.vendor %>'},
+			app: {
+				files: '<%= files.concat.app %>',
+				options: {
+					banner: config.banner + "\'use strict\';\n",
+					process: config.concat.app.process
+				}
+			}
+		},
+		uglify: {
+			options: config.options.uglify,
+			vendor: {files: '<%= files.uglify.vendor %>'},
+			app: {files: '<%= files.uglify.app %>', options: {banner: config.banner}}
+		},
+		cssmin: {
+			vendor: {files: '<%= files.cssmin.vendor %>'},
+			app: {files: '<%= files.cssmin.app %>'}
+		},
+		copy: {
+			fontAwesome: {files: '<%= files.font.fontAwesome %>'}
+		},
+		watch: {
+			options: config.options.watch,
+			app : {files: '<%= files.watch.js %>', tasks: ['jshint']},
+			style: {files: '<%= files.watch.sass %>', tasks: ['jshint']}, 
 		}
 	});
 	
-	grunt.registerTask('build:release', ['clean:all', 'sass:release']);
+	grunt.registerTask('build:release', ['clean:all', 'sass:release', 'jshint', 'bump-only:prerelease', 'html2js', 'ngAnnotate', 'concat', 'uglify', 'cssmin', 'copy', 'clean:temp']);
 }
