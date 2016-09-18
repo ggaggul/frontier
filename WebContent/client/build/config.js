@@ -23,10 +23,11 @@ module.exports = function () {
 					}else if(filepath.indexOf('client/build/temporary') > -1){
 						return '// Source : ' + filepath + '*/\n' +
 								src.replace(/('use strict'|"use strict");/g, '');
-					}//else {
-					//	return '// Source : ' + filepath + '*/\n' +
-					//			src.replace(/('use strict'|"use strict");/g, '').replace(/(\/*([\s\S]?)\\/)|(\/\/(.*))/g, '').replace(/^\s+/g, '').replace(/\s+$/gm, '');
-					//}
+					}else {
+						return '// Source : ' + filepath + '*/\n' +
+								//src.replace(/('use strict'|"use strict");/g, '').replace(/(\/*([\s\S]?)\\/)|(\/\/(.*))/g, '').replace(/^\s+/g, '').replace(/\s+$/gm, '');
+								src.replace(/('use strict'|"use strict");/g, '').replace(/(\/\/(.*))/g, '').replace(/^\s+/g, '').replace(/\s+$/gm, '');
+					}
 				}
 			}
 		},
@@ -44,6 +45,9 @@ module.exports = function () {
 					removeScriptTypeAttributes: true,
 					removeStyleLinkTypeAttributes: true
 				}
+			},
+			sass :{
+				sourcemap: 'none'
 			},
 			uglify: {
 				sourceMap: false,

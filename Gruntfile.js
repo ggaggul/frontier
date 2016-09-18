@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 	
 	grunt.log.writeln('>>BUILD MODE : ' + buildMode);
 	
-	//빌드환경 설
+	//빌드환경 설정
 	var configMode = require('./GruntfileConfig')();
 	
 	//Loaded Task에서 사용하는 Configuration
@@ -40,14 +40,34 @@ module.exports = function (grunt) {
 			}
 		},
 		
+		html2js: {
+			options: config.options.html2js,
+			app: {
+				options: {
+					base: '<%= paths.template %>',
+					module: 'frontier.templates',
+					rename: config.html2js.app.rename
+				},
+				files: '<%= files.html2js.app %>'
+			}
+		},
+		
 		clean: {
 			options: {force: true},
 			all: '<%= files.clean.all %>',
 			app: '<%= files.clean.app %>',
 			vendor: '<%= files.clean.vendor %>',
 			temp: '<%= files.clean.temp %>'
+		},
+		sass: {
+			release: {
+				options: config.options.sass,
+				files: [
+					'<%= files.sass.app %>', '<%= files.sass.appVendor %>'
+				]
+			}
 		}
 	});
 	
-	grunt.registerTask('build:release', ['clean:all'])
+	grunt.registerTask('build:release', ['clean:all', 'sass:release']);
 }

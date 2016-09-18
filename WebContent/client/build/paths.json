@@ -4,7 +4,7 @@
 	"client": ".<%= build.web_root %>/client",
 	"js": ".<%= build.web_root %>/client/scripts",
 	"css": ".<%= build.web_root %>/client/styles",
-	"less": ".<%= build.web_root %>/client/less",
+	"sass": ".<%= build.web_root %>/client/sass",
 	"img": ".<%= build.web_root %>/client/images",
 	"font": ".<%= build.web_root %>/client/fonts",
 	"temp": ".<%= build.web_root %>/client/build/temporary",

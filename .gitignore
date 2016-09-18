@@ -57,5 +57,6 @@ local.properties
 
 # Code Recommenders
 .recommenders/
-log/
-logs
+logs/
+*.scssc
+temporary/

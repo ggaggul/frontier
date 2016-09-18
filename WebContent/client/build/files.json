@@ -1,5 +1,10 @@
 {
 	"bump": ["package.json", "bower.json"],
+	"jshint": ["<%= paths.js %>/**/*.js"],
+	"watch": {
+		"js": ["<%= paths.js %>/**/*.js"],
+		"scss": "<%= paths.sass %>/**/*.scss"
+	},
 	"clean": {
 		"all": ["<%= paths.dist %>/**/*"],
 		"app": [
@@ -15,6 +20,9 @@
 			"<%= paths.dist %>/styles/vendor.min.css"
 		],
 		"temp": ["<%= paths.temp %>"]
+	},
+	"sass": {
+		"app": {"<%= paths.temp %>/<%= pkg.app_name %>.css": ["<%= paths.sass %>/frontier.scss"]},
+		"appVendor": {"<%= paths.temp %>/<%= pkg.app_name %>.vendor.css": ["<%= paths.sass %>/vendor.scss"]}
 	}
-	
 }
