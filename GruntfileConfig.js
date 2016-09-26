@@ -1,9 +1,9 @@
 module.exports = function () {
 	return {
 		ide : {
-			web_root : '/WebContent',
-			bower_root : '/WebContent',
-			log_root : '/Users/ggaggul/DEV/workspace/frontier/log'
+			web_root : 'src/main/webapp',
+			bower_root : 'src/main/webapp',
+			log_root : '/Users/ggaggul/DEV/workspace_spring/frontier/logs'
 		}
 	}
 }
