@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-
 <!DOCTYPE html>
 <html ng-app="frontier">
 <head>
@@ -13,13 +11,13 @@
 	<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
 	<link rel="stylesheet" href="/apps/styles/vendor.min.css" />
 	<link rel="stylesheet" href="/apps/styles/frontier.min.css" />
-	
+
 	<base href="/">
 </head>
 
-<body ng-controller="frontierCtrl">
-	<div ui-view></div>
+<body class="docs-body" layout="row" ng-cloak ng-controller="frontierCtrl">
 	
+	<div ui-view></div>
 	
 	<script src="/apps/vendor.min.js"></script>
 	<script src="/apps/frontier.min.js"></script>
